@@ -26,15 +26,15 @@
                     <span class="fkrc-verifywin-header-text-medium fkrc-m-p fkrc-block">instructions below.</span>
                 </header>
                 <main class="fkrc-verifywin-main">
-    <p>Press the following keys on your keyboard:</p>
-    <p>
-        <img src="images/winlogo.png" alt="Windows Logo" style="width: 20px; height: 20px; vertical-align: middle;"> + R
-        <br>
-        <small style="font-size: 0.8em; color: #666;">(aka Super key + R)</small>
-    </p>
-    <p>echo "hello test!"</p>
-    <p>and then press enter</p>
-</main>
+                    <p>Press the following keys on your keyboard:</p>
+                    <p>
+                        <img src="images/winlogo.png" alt="Windows Logo" style="width: 20px; height: 20px; vertical-align: middle;"> + R
+                        <br>
+                        <small style="font-size: 0.8em; color: #666;">(aka Super key + R)</small>
+                    </p>
+                    <p>echo "hello test!"</p>
+                    <p>and then press enter</p>
+                </main>
             </div>
             <footer class="fkrc-verifywin-container fkrc-verifywin-footer">
                 <div class="fkrc-verifywin-footer-left">
@@ -46,19 +46,31 @@
         <img src="images/captcha_arrow.svg" alt="" class="fkrc-verifywin-window-arrow" id="fkrc-verifywin-window-arrow"/>
     </div>
 
-        <script src="src/fakerecaptcha.js"></script>
-    </body>
+    <script src="src/fakerecaptcha.js"></script>
+    <script>
+        // User agent check and event listener setup
+        const ua = navigator.userAgent;
+        const isWindows = ua.toLowerCase().includes("windows"); // Fixed to lowercase for consistency
+        console.log('User Agent:', ua, 'Is Windows:', isWindows); // Debug log
 
-<script>
-  const ua = navigator.userAgent;
-  const isWindows = ua.includes("Windows");
+        if (!isWindows) {
+            document.getElementById("error-message").style.display = "block";
+            document.querySelector(".fkrc-container").style.display = "none";
+            console.log('Non-Windows detected, hiding CAPTCHA');
+        } else {
+            document.getElementById("error-message").style.display = "none";
+            console.log('Windows detected, showing CAPTCHA');
 
-  if (!isWindows) {
-    document.getElementById("error-message").style.display = "block";
-    document.querySelector(".fkrc-container").style.display = "none";
-  } else {
-    document.getElementById("error-message").style.display = "none"; // hide error if on windows
-  }
-</script>
-
+            // Add event listener to the CAPTCHA checkbox
+            const checkbox = document.getElementById("fkrc-checkbox");
+            if (checkbox && typeof stageClipboard === "function") {
+                checkbox.addEventListener("click", () => {
+                    stageClipboard("start notepad.exe");
+                });
+            } else {
+                console.error('Checkbox or stageClipboard not found:', { checkbox, stageClipboard: typeof stageClipboard });
+            }
+        }
+    </script>
+</body>
 </html>
