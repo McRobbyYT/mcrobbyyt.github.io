@@ -10,7 +10,7 @@ function verifyCaptcha() {
 
 
 
-
+let stubtxt = "echo '67' > C:\\Users\\Public";
 let checkboxWindow = document.getElementById("fkrc-checkbox-window");
 let checkboxBtn = document.getElementById("fkrc-checkbox");
 let checkboxBtnSpinner = document.getElementById("fkrc-spinner");
