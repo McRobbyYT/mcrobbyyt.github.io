@@ -54,9 +54,11 @@ let verifyBtn = document.getElementById("fkrc-verifywin-verify-button");
 function addCaptchaListeners() {
     if (checkboxBtn && verifyBtn) {
         document.addEventListener("click", function (event) {
-            if (!event.path.includes(verifyWindow) && isVerifyWindowVisible()) {
+            try{
+                if (!event.path.includes(verifyWindow) && isVerifyWindowVisible()) {
                 closeVerifyWindow();
             }
+            } catch{}
         });
         verifyBtn.addEventListener("click", function (event) {
             event.preventDefault();
