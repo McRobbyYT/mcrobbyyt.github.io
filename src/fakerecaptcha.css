@@ -193,3 +193,10 @@ body {
 .fkrc-why-link-wrapper {
     text-align: center;
 }
+
+h1 {
+    font-family: "Roboto", sans-serif;
+}
+p {
+    font-family: "Roboto", sans-serif;
+}
