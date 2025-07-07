@@ -71,11 +71,11 @@ body {
     vertical-align: baseline;
 }
 .fkrc-captcha-logo-on {
-    position: relative;
-    left: 246px;
-    bottom: 40px;
-    width: 33px;
-    height: 33px;
+    position: absolute;
+    left: 205px;
+    bottom: 295px;
+    width: 60px;
+    height: 60px;
     vertical-align: baseline;
 }
 
