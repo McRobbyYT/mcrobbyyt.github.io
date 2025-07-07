@@ -70,6 +70,14 @@ body {
     height: 33px;
     vertical-align: baseline;
 }
+.fkrc-captcha-logo-on {
+    position: relative;
+    left: 246px;
+    bottom: 40px;
+    width: 33px;
+    height: 33px;
+    vertical-align: baseline;
+}
 
 .fkrc-checkbox-desc {
     color: #555555;
